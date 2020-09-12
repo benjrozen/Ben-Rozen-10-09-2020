@@ -1,10 +1,8 @@
 package Tests;
 
-
 import Infrastructure.AnyPage;
 import org.junit.Test;
 import org.openqa.selenium.*;
-
 
 public class AutomationPage extends AnyPage {
 
