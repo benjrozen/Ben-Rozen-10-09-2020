@@ -3,20 +3,16 @@ package Infrastructure;
 import Infrastructure.TestNG.AnyTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnyPage extends AnyTest {
 
+    public ArrayList<String> openTabs;
 
 
     public void navigateToUrl(String url) {
@@ -29,9 +25,18 @@ public class AnyPage extends AnyTest {
     }
 
     public String getURL() {
+        String theURL = driver.getCurrentUrl();
         return driver.getCurrentUrl();
     }
 
+    public void waitForUrlToBe(String url) {
+        try {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.urlToBe(url));
+            System.out.println("Url now contains: " + url);
+        } catch (Exception e) {
+            System.out.println("Url does notcontain: " + url);
+        }
+    }
 
     public WebElement findElement(String[] element) {
         WebElement element1 = null;
@@ -45,31 +50,40 @@ public class AnyPage extends AnyTest {
         return element1;
     }
 
-
-
-
-
-    public void findScrollClickElement(String[] element) {
-        WebElement element1 = findElement(element);
-        scrollIntoView(element1, element[1]);
-        click(element1, element[1]);
+    public List<WebElement> findElements(String[] element) {
+        List<WebElement> elements = null;
+        try {
+            elements = driver.findElements(By.cssSelector(element[0]));
+            System.out.println("Found total of " + elements.size() + " elements of type: " + element[1]);
+        } catch (Exception e) {
+            System.out.println("Could not find list of elements: " + element[1]);
+        }
+        return elements;
     }
 
-
-    public void scrollIntoView(WebElement element, String webElementName) {
+    public void scrollToElement(String[] element) {
+        WebElement element1 = findElement(element);
         try {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
-            jse.executeScript("arguments[0].scrollIntoView(true);", element);
+            jse.executeScript("arguments[0].scrollIntoView(true);", element1);
         } catch (Exception e) {
         }
     }
 
-    protected void click(WebElement element, String webElementName) {
+    public void clickOn(String[] element) {
         try {
-            element.click();
-            System.out.println("Click on: " + webElementName);
+            findElement(element).click();
+            System.out.println("Clicked on: " + element[1]);
         } catch (Exception e) {
-            System.out.println("Can't click on: " + webElementName);
+            System.out.println("Can't click on: " + element[1]);
+        }
+    }
+
+    public void checkURLRedirect(String url, String section) {
+        if (getURL().contains(url)) {
+            System.out.println(section + " redirect working");
+        }else {
+            System.out.println("No redirect after clicking: " + section);
         }
     }
 
@@ -90,7 +104,29 @@ public class AnyPage extends AnyTest {
         }
     }
 
+    public void typeIn(String[] element, String text) {
+        WebElement element1 = findElement(element);
+        clear(element1);
+        element1.sendKeys(text);
     }
+
+    public void clear(WebElement element) {
+        try {
+            element.clear();
+        } catch (Exception e) {
+        }
+    }
+
+    public void switchToCurrentTab(){
+        openTabs =    new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(openTabs.get(1));
+    }
+
+    public void returnToInitialTab(){
+        driver.close();
+        driver.switchTo().window(openTabs.get(0));
+    }
+}
 
 
 
