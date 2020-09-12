@@ -3,14 +3,10 @@
 
 Test scenarios:
 
-1. Verify presence of header items.
-2. Verify presence of introduction section.
-3. Check WhatsApp side button functionality.
-4. Verify presence of "how can we help?" items (איך נוכל לעזור לכם?).
-5. Check functionality of "portfolio" slide (עבודות לדוגמא).
-6. Verify presence of "clients" slider (כמה מהלקוחות שלנו).
-7. Verify presence of "Q&A" section (לכל שאלה תשובה).
-8. Check functionality of contact-us form (רוצים לשמוע עוד?).
-8. Check functionality of social media buttons.
-9. Check functionality of sticky footer contact-us form (איך אפשר לעזור?).
-10. Check functionality of back to top button
+1. Verify presence of static elements (header, introduction, services (איך נוכל לעזור לכם?), Q&A..)
+2. Check WhatsApp side button functionality.
+3. Check functionality of "portfolio" slider (עבודות לדוגמא).
+4. Verify presence of "clients" slider (כמה מהלקוחות שלנו).
+5. Check functionality of both contact-us forms.
+6. Check functionality of social media buttons.
+7. Check functionality of back to top button
