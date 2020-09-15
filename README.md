@@ -1,5 +1,8 @@
 # Ben-Rozen-10-09-2020
  Automation test project
+ 
+Prerequisite:
+- Java jdk : https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
 
 Test scenarios:
 
