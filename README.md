@@ -3,6 +3,7 @@
  
 Prerequisite:
 - Java jdk : https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
+- Git      : https://git-scm.com/downloads
 
 Test scenarios:
 
