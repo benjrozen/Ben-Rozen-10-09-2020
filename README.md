@@ -2,7 +2,8 @@
  Automation test project
  
 Prerequisite:
-- Java jdk : https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
+- Java     : https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
+- Selenium : https://www.selenium.dev/downloads/
 - Git      : https://git-scm.com/downloads
 
 Test scenarios:
