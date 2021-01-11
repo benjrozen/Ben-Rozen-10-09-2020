@@ -4,7 +4,6 @@
 Prerequisite:
 - Java     : https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
 - Selenium : https://www.selenium.dev/downloads/
-- Git      : https://git-scm.com/downloads
 
 Test scenarios:
 
